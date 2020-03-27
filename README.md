@@ -5,6 +5,7 @@ This library is built on top of Pytorch. Currently it is being developed for for
 * Supports Image Augmentations
   * [torchvision.transforms](https://pytorch.org/docs/stable/torchvision/transforms.html)
   * [Albumentations](https://github.com/albumentations-team/albumentations)
+
 Note: Not all the features are supported on the fly. Some modifications may be necessary
 
 * Supported Networks
