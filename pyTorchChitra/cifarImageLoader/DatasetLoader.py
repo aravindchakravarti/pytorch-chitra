@@ -1,5 +1,5 @@
 from torchvision import datasets, transforms
-from utils.utils import isCudaAvailable
+from pyTorchChitra.utils.utils import isCudaAvailable
 from albumentations import Compose, RandomCrop, Normalize, HorizontalFlip, Resize, OneOf, Cutout, VerticalFlip, Rotate
 from albumentations import ShiftScaleRotate
 from albumentations.pytorch import ToTensor

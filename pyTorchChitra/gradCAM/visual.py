@@ -3,9 +3,9 @@ import torch
 
 import matplotlib.pyplot as plt
 
-from gradCAM.gradcam import GradCAM
-from gradCAM.gradcam_pp import GradCAMPP
-from utils.utils import to_numpy, unnormalize
+from pyTorchChitra.gradCAM.gradcam import GradCAM
+from pyTorchChitra.gradCAM.gradcam_pp import GradCAMPP
+from pyTorchChitra.utils.utils import to_numpy, unnormalize
 
 
 def visualize_cam(mask, img, alpha=1.0):

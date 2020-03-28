@@ -58,5 +58,5 @@ def displayDataSetSampleImages(image_loader, classes, mean, std, num_of_images):
     axs[i].set_title(classes[labels[i]]) 
     axs[i].axis('off')
 
-  plt.savefig('Sample_Images.png')
+  plt.savefig('./gdrive/My Drive/EVA_Library/Sample_Images.png')
   plt.clf()

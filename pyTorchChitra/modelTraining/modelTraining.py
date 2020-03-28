@@ -1,7 +1,7 @@
 import torch.optim as optim
 import torch.nn as nn
 import torch.nn.functional as F 
-from modelTraining.CNNTrainTest import train, test
+from pyTorchChitra.modelTraining.CNNTrainTest import train, test
 import matplotlib.pyplot as plt
 
 def setupOptimizer(net, device,  optimzer_select='NLLLoss', lr=0.01):
@@ -21,6 +21,7 @@ def runTheModel (model, device, optimizer, train_loader, test_loader, scheduler,
     print("EPOCH:", epoch)
     plot_train_losses, plot_train_acc = train(model, device, train_loader, optimizer, epoch)
     val_loss, plot_test_losses, plot_test_acc = test(model, device, test_loader)
+    print('Validation loss to Schedular = '+str(val_loss)+'\n')
     scheduler.step(val_loss)
 
   return(plot_train_losses, plot_train_acc, plot_test_losses, plot_test_acc)

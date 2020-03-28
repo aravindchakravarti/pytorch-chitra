@@ -19,10 +19,10 @@ Note: Not all the features are supported on the fly. Some modifications may be n
 # Installations 
 
 ```python
- pip install -i https://test.pypi.org/simple/ pytorch-chitra-aravinddcsadguru
+ pip install -i https://test.pypi.org/simple/ pyTorchChitra-aravinddcsadguru
 ```
 
-## What is the pytorch-chitra
+## What is the pyTorchChitra
 * Short Answer
   I was not finding _unique_ name in PyPI
 
