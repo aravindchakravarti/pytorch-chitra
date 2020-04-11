@@ -20,7 +20,7 @@ def setup_OCLR_Optimizer(net, device, total_steps, num_raise, anneal = 'linear',
 
     model =  net.to(device)
     criteria = nn.CrossEntropyLoss()
-    optimizer = optim.SGD(model.parameters(), lr = (max_lr/div_factor), momentum=0.9)
+    optimizer = optim.SGD(model.parameters(), lr = (max_lr/div_factor), momentum=0.9, weight_decay=1e-4)
     scheduler = optim.lr_scheduler.OneCycleLR(optimizer = optimizer,
                                             max_lr = max_lr,
                                             total_steps = total_steps,

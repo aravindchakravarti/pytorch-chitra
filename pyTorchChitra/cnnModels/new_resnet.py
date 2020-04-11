@@ -48,7 +48,7 @@ class NewResNet(nn.Module):
 
         R1 = F.relu(self.bn_R1(self.conv_R1(X)))      # ---------
         R1 = self.bn_R1(self.conv_R1(R1))             #          |_ ResNet Block
-        # Inherent skip connection in ResNet block    #          |
+                                                      #          |
         R1 = F.relu(R1)                               #  --------
         
         layer_1 = X + R1
@@ -61,7 +61,7 @@ class NewResNet(nn.Module):
 
         R2 = F.relu(self.bn_R2(self.conv_R2(X)))      #  ----------
         R2 = self.bn_R2(self.conv_R2(R2))             #            |_ ResNet Block
-        # Inherent skip connection in ResNet block    #            |
+                                                      #            |
         R2 = F.relu(R2)                               #  ----------
 
         layer_3 = X + R2

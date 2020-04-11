@@ -21,15 +21,15 @@ class TriangularWavePlotter(object):
         min_bound     : The minimum learning rate is when model accuracy starts increasing in “LR range test” 
         max_bound     : The maximum learning rate is when model accuracy starts decreasing or plateus in 
                         “LR range test”
-                 ^                             ___________ Upper Bound
+                 ^                            ___________ Upper Bound
               L  |          /\        /\                
-              R  |		   /  \      /  \
-		         |        /    \    /    \
-	             |    \	 /      \  /      \  /
-	             |     \/        \/        \/  ___________ Lower Bound
-	             |      | 		  |	   |
-	   	         |      |< Cycle> |<SS>|
-	   		     |			                * SS = Step Size
+              R  |         /  \      /  \
+                 |        /    \    /    \
+                 |    \	 /      \  /      \  /
+                 |     \/        \/        \/ ___________ Lower Bound
+                 |      | 		  |	   |
+                 |      |< Cycle> |<SS>|
+                 |			                * SS = Step Size
                 -|-------------------------------------------------> Iterations
 
         '''
