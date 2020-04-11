@@ -1,6 +1,7 @@
 from tqdm import tqdm
 import torch.nn.functional as F 
 import torch
+from pyTorchChitra.utils.global_vars import cyclic_LR_history
 
 
 train_losses = []
@@ -8,7 +9,7 @@ test_losses = []
 train_acc = []
 test_acc = []
 
-def train(model, device, train_loader, optimizer, epoch):
+def train(model, device, train_loader, optimizer, epoch, scheduler, isOCLR = False):
   model.train()
   pbar = tqdm(train_loader)
 
@@ -41,6 +42,11 @@ def train(model, device, train_loader, optimizer, epoch):
 
     pbar.set_description(desc= f'Loss={loss.item()} Batch_id={batch_idx} Accuracy={100*correct/processed:0.2f}')
     train_acc.append(100*correct/processed)
+
+    if isOCLR == True:
+        scheduler.step()
+        for param_group in optimizer.param_groups:
+            cyclic_LR_history.append(param_group['lr'])
 
   return(train_losses, train_acc)  
 

@@ -1,7 +1,7 @@
 from torchvision import datasets, transforms
 from pyTorchChitra.utils.utils import isCudaAvailable
 from albumentations import Compose, RandomCrop, Normalize, HorizontalFlip, Resize, OneOf, Cutout, VerticalFlip, Rotate
-from albumentations import ShiftScaleRotate
+from albumentations import ShiftScaleRotate, PadIfNeeded, RandomCrop
 from albumentations.pytorch import ToTensor
 from PIL import ImageFile, Image
 import numpy as np
@@ -71,13 +71,13 @@ def cifar10WithAlbumentations(batch_size = 64, number_of_workers = 4, prob_trans
 
   # Torch dataloader doesn't support albumentations out of the box. we need a wrapper function which can use __call__ 
   # method.  
-  def strong_aug(p=0.5):
+  def strong_aug(p=1.0):
     return Compose([
-      HorizontalFlip(),
-      VerticalFlip(),
-      ShiftScaleRotate(rotate_limit=30), 
-      Cutout(num_holes=4, max_h_size=6, max_w_size=6),
-      Rotate(limit=30) 
+        PadIfNeeded(min_height=36, min_width=36, p=1),
+        RandomCrop(height=32, width=32, p=1),
+        HorizontalFlip(p=1),
+        #Normalize(mean=(0.4914, 0.4822, 0.4465), std=(0.2023, 0.1994, 0.2010)),
+        Cutout(num_holes=1, max_h_size=8, max_w_size=8, fill_value=127, p=1),
       ], p=p)
 
   def augment(aug, image):
